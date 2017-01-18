@@ -2,10 +2,11 @@ package gocompute
 
 import (
 	//	"fmt"
-	"golang-set"
+	"github.com/jophish/golang-set"
 	//	"reflect"
 )
 
+// Internal representation of an NFA
 type NFA struct {
 	states     mapset.Set
 	alphabet   mapset.Set

@@ -1,28 +1,30 @@
 package gocompute
 
 import (
-	"gopkg.in/fatih/set.v0"
+	"github.com/jophish/golang-set"
 )
-
+// Internal representation of a PDA
 type PDA struct {
-	states     *set.Set
-	slphabet   *set.Set
-	transition func(state, input, stackSymbol string) (nextStates *set.Set)
+	states     *mapset.Set
+	slphabet   *mapset.Set
+	transition func(state, input, stackSymbol string) (nextStates *mapset.Set)
 	start      string
 	stackStart string
-	accept     *set.Set
+	accept     *mapset.Set
 }
 
+// Constructor for a new PDA.
 func newPDA(states,
-	alphabet *set.Set,
-	transition func(state, input, stackSymbol string) (nextStates *set.Set),
+	alphabet *mapset.Set,
+	transition func(state, input, stackSymbol string) (nextStates *mapset.Set),
 	start,
 	stackStart string,
-	accept *set.Set) *PDA {
+	accept *mapset.Set) *PDA {
 
 	return &PDA{states, alphabet, transition, start, stackStart, accept}
 }
 
+// Simulates a PDA. Unimplemented.
 func (p PDA) Simulate(w string) bool {
 	//each configuration (state, input, stack head) is a node in a graph, with directed edges
 	//going out as specified by the transition function. do a BFS, and return TRUE if any nodes
